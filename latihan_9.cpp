@@ -69,5 +69,9 @@ public:
             cout << "Buku tidak sedang dipinjam.\n";
         }
     }
+    
+};
+
+class  Admin {
 
 };
