@@ -1,10 +1,11 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 // deklarasi kelas
 class Petugas;
 class Admin;
-
+class Peminjam;
 class Buku {
 private:
     string judul;
@@ -48,7 +49,7 @@ private:
     string levelAkses;
 
 public:
-    Petugas(string n, int id, string la) : nama(n), idPetugas(id), levelAkses(la) {}
+    Petugas(string n, int id, string akses) : nama(n), idPetugas(id), levelAkses(akses) {}
 
     void prosesPinjam(Buku* b, Peminjam* p) {
         if (!b->dipinjam) {
@@ -69,11 +70,12 @@ public:
             cout << "Buku tidak sedang dipinjam.\n";
         }
     }
+
     friend class Admin;
 };
 
-class  Admin {
-public : 
+class Admin {
+public:
     void ubahLevelAkses(Petugas* ptg, string aksesBaru) {
         ptg->levelAkses = aksesBaru;
         cout << "Level akses petugas " << ptg->nama << " diubah menjadi " << aksesBaru << endl;
@@ -82,5 +84,11 @@ public :
     void tampilkanLevelAkses(const Petugas* ptg) const {
         cout << "Petugas: " << ptg->nama << ", Akses: " << ptg->levelAkses << endl;
     }
-
 };
+
+// Friend function dari Peminjam dan Buku
+void lihatStatistik(const Buku& b, const Peminjam& p) {
+    cout << "\n--- Statistik Admin ---\n";
+    cout << "Status Buku: " << (b.dipinjam ? "Dipinjam" : "Tersedia") << endl;
+    cout << "Total pinjaman oleh peminjam: " << p.totalPinjaman << endl;
+}
