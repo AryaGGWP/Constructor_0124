@@ -69,7 +69,7 @@ public:
             cout << "Buku tidak sedang dipinjam.\n";
         }
     }
-    
+    friend class Admin;
 };
 
 class  Admin {
