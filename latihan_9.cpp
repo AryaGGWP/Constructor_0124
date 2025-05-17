@@ -92,3 +92,28 @@ void lihatStatistik(const Buku& b, const Peminjam& p) {
     cout << "Status Buku: " << (b.dipinjam ? "Dipinjam" : "Tersedia") << endl;
     cout << "Total pinjaman oleh peminjam: " << p.totalPinjaman << endl;
 }
+
+int main() {
+    Buku buku1("Clean Code", "Robert C. Martin");
+    Peminjam user1("Budi", 1001);
+    Petugas petugas1("Sari", 2001, "Normal");
+    Admin admin1;
+
+    buku1.info();
+    user1.info();
+
+    petugas1.prosesPinjam(&buku1, &user1);
+    buku1.info();
+    user1.info();
+
+    admin1.tampilkanLevelAkses(&petugas1);
+    admin1.ubahLevelAkses(&petugas1, "Supervisor");
+
+    lihatStatistik(buku1, user1);
+
+    petugas1.prosesKembali(&buku1, &user1);
+    buku1.info();
+    user1.info();
+
+    return 0;
+}
