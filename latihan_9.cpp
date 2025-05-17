@@ -59,4 +59,15 @@ public:
             cout << "Buku sudah dipinjam.\n";
         }
     }
+
+    void prosesKembali(Buku* b, Peminjam* p) {
+        if (b->dipinjam) {
+            b->dipinjam = false;
+            p->totalPinjaman -= 1;
+            cout << "Petugas " << nama << " memproses pengembalian buku.\n";
+        } else {
+            cout << "Buku tidak sedang dipinjam.\n";
+        }
+    }
+
 };
