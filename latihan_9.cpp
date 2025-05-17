@@ -36,4 +36,17 @@ public:
         cout << "Nama: " << nama << ", ID: " << id
              << ", Total Pinjaman: " << totalPinjaman << endl;
     }
+
+    friend class Petugas;
+    friend void lihatStatistik(const Buku& b, const Peminjam& p);
+};
+
+class Petugas {
+private:
+    string nama;
+    int idPetugas;
+    string levelAkses;
+
+public:
+    Petugas(string n, int id, string la) : nama(n), idPetugas(id), levelAkses(la) {}
 };
