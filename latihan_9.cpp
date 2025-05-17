@@ -49,4 +49,14 @@ private:
 
 public:
     Petugas(string n, int id, string la) : nama(n), idPetugas(id), levelAkses(la) {}
+
+    void prosesPinjam(Buku* b, Peminjam* p) {
+        if (!b->dipinjam) {
+            b->dipinjam = true;
+            p->totalPinjaman += 1;
+            cout << "Petugas " << nama << " memproses peminjaman buku.\n";
+        } else {
+            cout << "Buku sudah dipinjam.\n";
+        }
+    }
 };
