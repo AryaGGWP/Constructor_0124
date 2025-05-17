@@ -10,4 +10,30 @@ private:
     string judul;
     string penulis;
     bool dipinjam;
+
+public:
+    Buku(string j, string p) : judul(j), penulis(p), dipinjam(false) {}
+
+    void info() const {
+        cout << "Judul: " << judul << ", Penulis: " << penulis
+             << ", Status: " << (dipinjam ? "Dipinjam" : "Tersedia") << endl;
+    }
+
+    friend class Petugas;
+    friend void lihatStatistik(const Buku& b, const Peminjam& p);
+};
+
+class Peminjam {
+private:
+    string nama;
+    int id;
+    int totalPinjaman;
+
+public:
+    Peminjam(string n, int i) : nama(n), id(i), totalPinjaman(0) {}
+
+    void info() const {
+        cout << "Nama: " << nama << ", ID: " << id
+             << ", Total Pinjaman: " << totalPinjaman << endl;
+    }
 };
