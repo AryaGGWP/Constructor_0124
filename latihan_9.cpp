@@ -73,5 +73,14 @@ public:
 };
 
 class  Admin {
+public : 
+    void ubahLevelAkses(Petugas* ptg, string aksesBaru) {
+        ptg->levelAkses = aksesBaru;
+        cout << "Level akses petugas " << ptg->nama << " diubah menjadi " << aksesBaru << endl;
+    }
+
+    void tampilkanLevelAkses(const Petugas* ptg) const {
+        cout << "Petugas: " << ptg->nama << ", Akses: " << ptg->levelAkses << endl;
+    }
 
 };
